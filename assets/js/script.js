@@ -181,35 +181,36 @@ function sheryAnimation() {
         config: { "noiseDetail": { "value": 6.11, "range": [0, 100] }, "distortionAmount": { "value": 2.9, "range": [0, 10] }, "scale": { "value": 59.54, "range": [0, 100] }, "speed": { "value": 0.58, "range": [0, 1] }, "zindex": { "value": -9996999, "range": [-9999999, 9999999] }, "aspect": { "value": 0.8333333134651184 }, "ignoreShapeAspect": { "value": true }, "shapePosition": { "value": { "x": 0, "y": 0 } }, "shapeScale": { "value": { "x": 0.5, "y": 0.5 } }, "shapeEdgeSoftness": { "value": 0, "range": [0, 0.5] }, "shapeRadius": { "value": 0, "range": [0, 2] }, "currentScroll": { "value": 0 }, "scrollLerp": { "value": 0.07 }, "gooey": { "value": true }, "infiniteGooey": { "value": false }, "growSize": { "value": 4, "range": [1, 15] }, "durationOut": { "value": 1, "range": [0.1, 5] }, "durationIn": { "value": 1.5, "range": [0.1, 5] }, "displaceAmount": { "value": 0.5 }, "masker": { "value": true }, "maskVal": { "value": 1.27, "range": [1, 5] }, "scrollType": { "value": 0 }, "geoVertex": { "range": [1, 64], "value": 1 }, "noEffectGooey": { "value": true }, "onMouse": { "value": 0 }, "noise_speed": { "value": 0.84, "range": [0, 10] }, "metaball": { "value": 0.44, "range": [0, 2] }, "discard_threshold": { "value": 0.5, "range": [0, 1] }, "antialias_threshold": { "value": 0, "range": [0, 0.1] }, "noise_height": { "value": 0.38, "range": [0, 2] }, "noise_scale": { "value": 8.4, "range": [0, 100] } }
     })
 }
+function hoverEffect() {
+    document.addEventListener("mousemove", function (dets) {
+        gsap.to("#flag", {
+            x: dets.x,
+            y: dets.y
+        })
+    })
 
-document.querySelector('body').style.cursor = 'none'
+    document.querySelector("#hero3").addEventListener("mouseenter", function () {
+        gsap.to(".mousefollower", {
+            opacity: 0,
+        })
+        gsap.to("#flag", {
+            opacity: 1
+        })
+    })
+
+    document.querySelector("#hero3").addEventListener("mouseleave", function () {
+        gsap.to(".mousefollower", {
+            opacity: 1,
+        })
+        gsap.to("#flag", {
+            opacity: 0
+        })
+    })
+}
+// document.querySelector('body').style.cursor = 'none'
 
 locoscroll();
 loadingAnimation();
 cursorAnimation();
 sheryAnimation();
-
-document.addEventListener("mousemove", function (dets) {
-    gsap.to ("#flag", {
-        x: dets.x,
-        y: dets.y
-    })
-})
-
-document.querySelector("#hero3").addEventListener("mouseenter", function () {
-    gsap.to(".mousefollower", {
-        opacity: 0,
-    })
-    gsap.to("#flag", {
-        opacity:1
-    })
-})
-
-document.querySelector("#hero3").addEventListener("mouseleave", function () {
-    gsap.to(".mousefollower", {
-        opacity: 1,
-    })
-    gsap.to("#flag", {
-        opacity:0
-    })
-})
+hoverEffect();
