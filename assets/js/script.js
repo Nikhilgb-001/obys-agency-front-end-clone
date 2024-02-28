@@ -57,7 +57,7 @@ function loadingAnimation() {
                 else {
                     timer.innerHTML = grow
                 }
-            }, 32);
+            }, 27);
         }
     })
 
@@ -69,7 +69,7 @@ function loadingAnimation() {
     tl.to("#loader", {
         opacity: 0,
         duration: 0.2,
-        delay: 2.8
+        delay: 2.6
         // delay:0
     })
 
@@ -207,7 +207,7 @@ function hoverEffect() {
         })
     })
 }
-// document.querySelector('body').style.cursor = 'none'
+document.querySelector('body').style.cursor = 'none'
 
 locoscroll();
 loadingAnimation();
